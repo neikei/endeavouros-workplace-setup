@@ -1,0 +1,78 @@
+##################################################
+### Quick and dirty testing of arch as workplace
+- hosts: localhost
+  become: yes
+
+  tasks:
+    - name: "[common] Debug"
+      debug:
+        msg: "Starting endeavouros-workplace-setup..."
+
+    - name: "[common] Install required packages"
+      package:
+        name:
+          - ansible
+          - vim
+          - git
+          - code
+          - chromium
+          - lsof
+          - nmap
+        state: latest
+
+    # Snap
+    - name: "[snap] Check if snap is installed already"
+      become: no
+      shell: "yay -Q snapd"
+      register: snapd_installed
+      changed_when: snapd_installed.rc|int == 1
+      failed_when: false
+
+    - name: "[snap] Install snap via yay"
+      become: no
+      shell: "yay -S --noconfirm snapd"
+      when: snapd_installed is changed
+    
+    - name: "[snap] Start and enable snap systemd config"
+      service:
+        name: snapd
+        state: started
+        enabled: yes
+
+    - name: "[snap] Create softlink for /snap"
+      file:
+        src: "/var/lib/snapd/snap"
+        dest: "/snap"
+        state: link
+        
+    - name: "[snap] Install snap packages"
+      snap:
+        name:
+          - spotify
+        state: present
+
+    - name: "[snap] Install classic snap packages"
+      snap:
+        name:
+          - code
+        classic: yes
+        state: present
+
+    # Docker
+    - name: "[docker] Configure kernel module loop"
+      lineinfile:
+        path: "/etc/modules-load.d/loop.conf"
+        line: "loop"
+        create: "yes"
+
+    - name: "[docker] Install docker packages"
+      package:
+        name:
+          - docker
+        state: latest
+
+    - name: "[docker] Start and enable docker systemd config"
+      service:
+        name: docker
+        state: started
+        enabled: yes
