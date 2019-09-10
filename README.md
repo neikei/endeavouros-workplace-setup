@@ -1,8 +1,31 @@
 # endeavouros-workplace-setup
 
-Quick and dirty testing of arch as workplace...
+[EndeavourOS](https://endeavouros.com/) workplace setup with ansible.
 
-1. sudo pacman -Suy && reboot
-2. sudo pacman -Sy ansible
-3. wget https://github.com/neikei/endeavouros-workplace-setup/install.yml
-4. ansible-playbook install.yml --ask-become-pass
+## Installation
+
+```bash
+# 1. Update EndeavourOS
+sudo pacman -Suy
+
+# 2. Reboot after updating all packages
+sudo reboot
+
+# 3. Install ansible
+sudo pacman -Sy ansible
+
+# 4. Download the install.yml
+wget https://github.com/neikei/endeavouros-workplace-setup/install.yml
+
+# 5. Run the installation
+ansible-playbook install.yml --ask-become-pass
+```
+
+## Included software
+
+- CLI-Tools (vim, git, lsof, nmap, tree, snap)
+- Visual Studio Code
+- Keepass
+- Chromium
+- Spotify
+- Docker
