@@ -101,6 +101,17 @@
             state: started
             enabled: yes
 
+        - name: "docker | Get username"
+          become: no
+          shell: "whoami"
+          register: username
+
+        - name: "docker | Add user to docker group"
+          user:
+            name: "{{ username.stdout }}"
+            groups: docker
+            append: true
+
       when:
         - install_docker is defined
         - install_docker
