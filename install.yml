@@ -14,6 +14,8 @@
       - keepass
       - code
       - chromium
+    aur_packages:
+      - seafile-client
     snap_packages:
       - spotify
     install_docker: true
@@ -32,6 +34,15 @@
       when:
         - pacman_packages is defined
         - pacman_packages|length|int >=1
+
+    # Arch user repo
+    - name: "aur | Install arch user repo packages"
+      become: no
+      shell: "yay -S --noconfirm {{ item }}"
+      with_items: "{{ aur_packages }}"
+      when:
+        - aur_packages is defined
+        - aur_packages|length|int >=1
 
     # Snap
     - name: "snap | Prepare snap and install packages"
