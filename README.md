@@ -23,9 +23,16 @@ ansible-playbook install.yml --ask-become-pass
 
 ## Included software
 
-- CLI-Tools (vim, git, lsof, nmap, tree, snap)
+- CLI-Tools
+  - vim
+  - git
+  - lsof
+  - nmap
+  - tree
+  - snap
 - Visual Studio Code
 - Keepass
+- Seafile
 - Chromium
 - Spotify
 - Docker

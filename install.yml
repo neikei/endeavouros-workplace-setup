@@ -93,6 +93,7 @@
           package:
             name:
               - docker
+              - docker-compose
             state: latest
 
         - name: "docker | Start and enable docker systemd config"
@@ -105,6 +106,7 @@
           become: no
           shell: "whoami"
           register: username
+          changed_when: false
 
         - name: "docker | Add user to docker group"
           user:
