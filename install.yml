@@ -11,11 +11,12 @@
       - lsof
       - nmap
       - tree
-      - keepass
       - code
       - chromium
     aur_packages:
+      - acroread
       - seafile-client
+      - keepassxc
     snap_packages:
       - spotify
     install_docker: true

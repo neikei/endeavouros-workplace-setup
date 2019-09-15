@@ -31,8 +31,9 @@ ansible-playbook install.yml --ask-become-pass
   - tree
   - snap
 - Visual Studio Code
-- Keepass
 - Seafile
 - Chromium
+- Acrobat Reader
 - Spotify
+- KeepassXC
 - Docker
