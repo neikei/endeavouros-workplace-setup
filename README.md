@@ -15,7 +15,7 @@ sudo reboot
 sudo pacman -Sy ansible
 
 # 4. Download the install.yml
-wget https://github.com/neikei/endeavouros-workplace-setup/install.yml
+wget https://raw.githubusercontent.com/neikei/endeavouros-workplace-setup/master/install.yml
 
 # 5. Run the installation
 ansible-playbook install.yml --ask-become-pass
