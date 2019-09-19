@@ -28,6 +28,11 @@
         msg: "Starting endeavouros-workplace-setup..."
 
     # Pacman
+    - name: "pacman | Upgrade all installed packages"
+      pacman:
+        update_cache: yes
+        upgrade: yes
+
     - name: "pacman | Install pacman packages"
       package:
         name: "{{ pacman_packages }}"
@@ -39,7 +44,7 @@
     # Arch user repo
     - name: "aur | Install arch user repo packages"
       become: no
-      shell: "yay -S --noconfirm {{ item }}"
+      shell: "yay -S --noconfirm --norebuild {{ item }}"
       with_items: "{{ aur_packages }}"
       when:
         - aur_packages is defined

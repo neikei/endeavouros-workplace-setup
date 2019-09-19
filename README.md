@@ -5,19 +5,13 @@
 ## Installation
 
 ```bash
-# 1. Update EndeavourOS
-sudo pacman -Suy
-
-# 2. Reboot after updating all packages
-sudo reboot
-
-# 3. Install ansible
+# 1. Install ansible
 sudo pacman -Sy ansible
 
-# 4. Download the install.yml
+# 2. Download the install.yml
 wget https://raw.githubusercontent.com/neikei/endeavouros-workplace-setup/master/install.yml
 
-# 5. Run the installation
+# 3. Run the installation
 ansible-playbook install.yml --ask-become-pass
 ```
 
