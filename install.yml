@@ -15,7 +15,7 @@
       - chromium
     aur_packages:
       - acroread
-      - seafile-client
+      - seafile-client-git
       - keepassxc
     snap_packages:
       - spotify
