@@ -13,6 +13,10 @@
       - tree
       - code
       - chromium
+#      - linux-headers # needed for virtualbox
+#      - virtualbox
+#      - virtualbox-host-dkms
+#      - vagrant
     aur_packages:
       - acroread
       - seafile-client-git
@@ -124,7 +128,23 @@
         - install_docker is defined
         - install_docker
 
+    # Further tasks
+    - name: "inputrc | Configure page up and down for history search"
+      lineinfile:
+        path: "~/.inputrc"
+        line: "{{ item }}"
+        create: yes
+      with_items:
+        - '"\e[5~": history-search-backward'
+        - '"\e[6~": history-search-forward'
+
+    - name: "timesyncd | Start and enable systemd-timesyncd"
+      systemd:
+        name: "systemd-timesyncd"
+        state: started
+        enabled: yes
+
     # Final
     - name: "final | Debug"
       debug:
-        msg: "Finished endeavouros-workplace-setup. Log out and in again to use all new tools."
+        msg: "Finished endeavouros-workplace-setup. Reboot your system to use all new tools."
