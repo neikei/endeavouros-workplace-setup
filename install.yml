@@ -13,6 +13,7 @@
       - tree
       - code
       - chromium
+      - eos-update-notifier # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
 #      - linux-headers # needed for virtualbox
 #      - virtualbox
 #      - virtualbox-host-dkms
@@ -23,6 +24,8 @@
       - keepassxc
     snap_packages:
       - spotify
+    unneeded_packages:
+      - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
     install_docker: true
 
   ### Installation
@@ -32,6 +35,11 @@
         msg: "Starting endeavouros-workplace-setup..."
 
     # Pacman
+    - name: "pacman | Remove unneeded packages"
+      pacman:
+        name: "{{ unneeded_packages }}"
+        state: absent
+
     - name: "pacman | Upgrade all installed packages"
       pacman:
         update_cache: yes

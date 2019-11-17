@@ -5,13 +5,16 @@
 ## Installation
 
 ```bash
-# 1. Install ansible
-sudo pacman -Sy ansible
+# 1. Remove kalu and update all installed packages
+sudo pacman -R kalu && sudo pacman -Syu
 
-# 2. Download the install.yml
+# 2. Install ansible
+sudo pacman -S ansible
+
+# 3. Download the install.yml
 wget https://raw.githubusercontent.com/neikei/endeavouros-workplace-setup/master/install.yml
 
-# 3. Run the installation
+# 4. Run the installation
 ansible-playbook install.yml --ask-become-pass
 ```
 
