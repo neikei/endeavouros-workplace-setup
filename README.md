@@ -20,17 +20,25 @@ ansible-playbook install.yml --ask-become-pass
 
 ## Included software
 
-- CLI-Tools
-  - vim
-  - git
-  - lsof
-  - nmap
-  - tree
-  - snap
-- Visual Studio Code
-- Seafile
-- Chromium
-- Acrobat Reader
-- Spotify
-- KeepassXC
-- Docker
+```yaml
+    pacman_packages:
+      - vim
+      - git
+      - lsof
+      - nmap
+      - nmon
+      - tree
+      - code
+      - keepass
+      - chromium
+      - eos-update-notifier # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+    aur_packages:
+      - acroread
+      - seafile-client-git
+      - spotify
+      - signal-desktop
+    snap_packages: ""
+    unneeded_packages:
+      - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+    install_docker: true
+```
