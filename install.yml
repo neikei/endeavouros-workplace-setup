@@ -10,20 +10,23 @@
       - git
       - lsof
       - nmap
+      - nmon
       - tree
       - code
+      - keepass
       - chromium
       - eos-update-notifier # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
 #      - linux-headers # needed for virtualbox
 #      - virtualbox
 #      - virtualbox-host-dkms
+#      - virtualbox-ext-oracle
 #      - vagrant
     aur_packages:
       - acroread
       - seafile-client-git
-      - keepassxc
-    snap_packages:
       - spotify
+      - signal-desktop
+    snap_packages: ""
     unneeded_packages:
       - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
     install_docker: true
@@ -56,7 +59,9 @@
     # Arch user repo
     - name: "aur | Install arch user repo packages"
       become: no
-      shell: "yay -S --noconfirm --norebuild {{ item }}"
+      shell: "pacman -Q | grep {{ item }} || yay -S --noconfirm --norebuild {{ item }}"
+      register: aur_install_state
+      changed_when: "':: PKGBUILD' in aur_install_state.stdout"
       with_items: "{{ aur_packages }}"
       when:
         - aur_packages is defined
