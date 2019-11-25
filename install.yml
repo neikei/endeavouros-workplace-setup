@@ -61,7 +61,7 @@
       become: no
       shell: "pacman -Q | grep {{ item }} || yay -S --noconfirm --norebuild {{ item }}"
       register: aur_install_state
-      changed_when: "':: PKGBUILD' in aur_install_state.stdout"
+      changed_when: "'install' in aur_install_state.stdout"
       with_items: "{{ aur_packages }}"
       when:
         - aur_packages is defined
@@ -122,7 +122,6 @@
         - name: "docker | Start and enable docker systemd config"
           service:
             name: docker
-            state: started
             enabled: yes
 
         - name: "docker | Get username"
