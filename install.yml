@@ -26,7 +26,8 @@
       - seafile-client-git
       - spotify
       - signal-desktop
-    snap_packages: ""
+    snap_packages:
+      - ""
     unneeded_packages:
       - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
     install_docker: true
@@ -55,6 +56,7 @@
       when:
         - pacman_packages is defined
         - pacman_packages|length|int >=1
+        - pacman_packages[0]|length|int >= 1
 
     # Arch user repo
     - name: "aur | Install arch user repo packages"
@@ -66,6 +68,7 @@
       when:
         - aur_packages is defined
         - aur_packages|length|int >=1
+        - aur_packages[0]|length|int >= 1
 
     # Snap
     - name: "snap | Prepare snap and install packages"
@@ -102,6 +105,7 @@
       when:
         - snap_packages is defined
         - snap_packages|length|int >= 1
+        - snap_packages[0]|length|int >= 1
 
     # Docker
     - name: "docker | Install and configure docker"
