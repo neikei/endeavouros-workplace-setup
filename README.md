@@ -5,8 +5,8 @@
 ## Installation
 
 ```bash
-# 1. Remove kalu and update all installed packages
-sudo pacman -R kalu && sudo pacman -Syu
+# 1. Update all installed packages
+sudo pacman -Syu
 
 # 2. Install ansible
 sudo pacman -S ansible
@@ -31,14 +31,15 @@ ansible-playbook install.yml --ask-become-pass
       - code
       - keepass
       - chromium
-      - eos-update-notifier # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+#     - eos-update-notifier # No longer needed since 2019.12.03 release
     aur_packages:
       - acroread
       - seafile-client-git
       - spotify
       - signal-desktop
-    snap_packages: ""
+    snap_packages:
+      - ""
     unneeded_packages:
-      - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+      - "" # kalu # No longer needed since 2019.12.03 release
     install_docker: true
 ```

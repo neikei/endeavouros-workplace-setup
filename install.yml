@@ -15,7 +15,7 @@
       - code
       - keepass
       - chromium
-      - eos-update-notifier # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+#     - eos-update-notifier # No longer needed since 2019.12.03 release
 #      - linux-headers # needed for virtualbox
 #      - virtualbox
 #      - virtualbox-host-dkms
@@ -29,7 +29,7 @@
     snap_packages:
       - ""
     unneeded_packages:
-      - kalu # Fix: https://forum.endeavouros.com/t/pacman-5-2-1-1-cant-install/2268
+      - "" # kalu # No longer needed since 2019.12.03 release
     install_docker: true
 
   ### Installation
