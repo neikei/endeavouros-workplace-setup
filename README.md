@@ -22,24 +22,30 @@ ansible-playbook install.yml --ask-become-pass
 
 ```yaml
     pacman_packages:
-      - vim
+      - chromium
+      - code
+      - geary
       - git
+      - keepass
       - lsof
       - nmap
       - nmon
+      - pdfsam
       - tree
-      - code
-      - keepass
-      - chromium
-#     - eos-update-notifier # No longer needed since 2019.12.03 release
+      - vim
+#      - linux-headers # needed for virtualbox
+#      - virtualbox
+#      - virtualbox-host-dkms
+#      - vagrant
     aur_packages:
       - acroread
       - seafile-client-git
-      - spotify
+      - shutter
       - signal-desktop
+      - spotify
     snap_packages:
       - ""
     unneeded_packages:
-      - "" # kalu # No longer needed since 2019.12.03 release
+      - ""
     install_docker: true
 ```
