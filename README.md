@@ -26,21 +26,16 @@ ansible-playbook install.yml --ask-become-pass
       - code
       - geary
       - git
-      - keepass
+      - keepassxc
       - lsof
       - nmap
       - nmon
       - pdfsam
       - tree
       - vim
-#      - linux-headers # needed for virtualbox
-#      - virtualbox
-#      - virtualbox-host-dkms
-#      - vagrant
     aur_packages:
       - acroread
       - seafile-client-git
-      - shutter
       - signal-desktop
       - spotify
     snap_packages:

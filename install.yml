@@ -10,7 +10,7 @@
       - code
       - geary
       - git
-      - keepass
+      - keepassxc
       - lsof
       - nmap
       - nmon
@@ -24,7 +24,6 @@
     aur_packages:
       - acroread
       - seafile-client-git
-      - shutter
       - signal-desktop
       - spotify
     snap_packages:
